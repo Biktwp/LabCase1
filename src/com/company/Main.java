@@ -15,6 +15,8 @@ public class Main {
         while ((line = br.readLine()) != null) {
             test+=line;
         }
+        test = test.replaceAll("\\W"," ");
+        test = test.replace("  "," ");
         word = test.split(" ");
         for (int j = 0; j<word.length;j++) {
             System.out.println(word[j]);
