@@ -9,19 +9,15 @@ public class Main {
     public static void reader(File f) throws IOException{
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
-        String line ;
+        String line = null ;
+        String test = "";
         String[] word;
-        line = br.readLine();
-        word = line.split(" ");
-        int i = 0;
-        while (fr != null) {
-
-            while (line != null) {
-                while (i < word.length) {
-                    System.out.println(word[i]);
-                    i++;
-                }
-            }
+        while ((line = br.readLine()) != null) {
+            test+=line;
+        }
+        word = test.split(" ");
+        for (int j = 0; j<word.length;j++) {
+            System.out.println(word[j]);
         }
         fr.close();
         br.close();
