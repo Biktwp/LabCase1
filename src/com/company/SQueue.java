@@ -46,4 +46,34 @@ public class SQueue implements IQueue {
         while(first.next == null){first = first.next; size++;}
         return size;
     }
+
+    public int frequency(String word){
+        int f = 0;
+        while(first != null){
+            if (word.equals(first.word)){
+                f++;
+            }
+            first = first.next;
+        }
+        return f;
+    }
+
+    public Elem fusion(int position){
+        Elem fusion = new Elem(getAt(position),frequency(getAt(position)));
+        return fusion;
+    }
+
+    public String getAt(int size){
+        if (isEmpty()){
+            System.out.println("The Queue is empty");
+            return null;
+        }
+        else if (size<0 && size>getSize())return null;
+        else{
+           for ( int i = 0; i < size; i++){
+               first = first.next;
+           }
+        }
+        return first.word;
+    }
 }

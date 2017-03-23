@@ -7,11 +7,11 @@ package com.company;
 
 public class DNode {
 
-    public String elem;
+    public Elem elem;
     public DNode prev;
     public DNode next;
 
-    public DNode(String elem) {
+    public DNode(Elem elem) {
         this.elem = elem;
     }
 
