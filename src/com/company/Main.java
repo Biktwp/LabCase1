@@ -9,13 +9,13 @@ public class Main {
     public static void reader(File f) throws IOException{
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
-        String line = null ;
+        String line ;
         String test = "";
         String[] word;
         while ((line = br.readLine()) != null) {
             test+=line;
         }
-        test = test.replaceAll("\\W"," ");
+        test = test.replaceAll("[^a-zA-Z]"," ");
         test = test.replace("  "," ");
         word = test.split(" ");
         for (int j = 0; j<word.length;j++) {
