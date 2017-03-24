@@ -24,11 +24,11 @@ public interface IList {
 
     public int getIndexOf(Elem elem);
 
-    public String getFirst();
+    public Elem getFirst();
 
-    public String getLast();
+    public Elem getLast();
 
-    public String getAt(int index);
+    public Elem getAt(int index);
 
     public String toString();
 

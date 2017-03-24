@@ -6,40 +6,44 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void reader(File f) throws IOException{
+    public static String[] reader(File f) throws IOException{
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
-        String line;
-        String test = "";
-        SQueue word = new SQueue();
-        String [] aux;
-        while ((line = br.readLine()) != null) {
-            test += line;
+        String line, text = " ";//these variables is to store all the lines and the test respectively
+        String [] aux;//This variable is to store all the words
+        while ((line = br.readLine()) != null) {//Here we introduce all the lines in the test variable
+            text += line;
         }
-        test = test.replaceAll("[^a-zA-Z]"," ");
-        test = test.replace("  "," ");
-        aux = test.split(" ");
-        for (int i = 0; i < aux.length; i++){
-            word.enqueue(aux[i]);
-        }
-
+        text = text.replaceAll("[^a-zA-Z]"," ");//Here we replace all the character by spaces
+        text = text.toLowerCase();
         fr.close();
         br.close();
+        aux = text.split(" ");//Here we introduce the words in the array
+        return aux;
     }
 
     public static void main(String[] args) {
 	// write your code here
-        File f = new File("/home/tau/UNI/EDA/LabCase1.txt");
-        DList Dictionary = new DList();
+        File f = new File("/home/tau/UNI/EDA/LabCase1.txt");//The directory of the file
+        DList dictionary = new DList();
+        SQueue queue = new SQueue();
         try{
-            reader(f);
-        } catch (IOException e){
+            queue.addWords(reader(f));//We adding the words in the queue
+            /*System.out.println("hol"+reader(f).length);
+            for(int i=0;i<queue.getSize();i++){
+                System.out.println(queue.getAt(i));
+            }*/
+            int disize = queue.getSize();
+            int i = 0;
+            while(i < disize || i == disize){
+                dictionary.enDlist(queue);
+                disize-=dictionary.getAt(i).frequency - 1;
+                i++;
+            }
+            System.out.println(dictionary.toString());
+            System.out.println(dictionary.getSize());
+        } catch (IOException e){//if it is an error make the e.printStackTrace
             e.printStackTrace();
         }
-
-
-
-
-
     }
 }

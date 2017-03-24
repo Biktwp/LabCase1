@@ -151,31 +151,31 @@ public class DList implements IList {
     }
 
 
-    public String getFirst() {
-        String result=null;
+    public Elem getFirst() {
+        Elem result=null;
         if (isEmpty()) {
             System.out.println("DList: List is empty");
-        } else result=header.next.elem.word;
+        } else result=header.next.elem;
         return result;
     }
 
-    public String getLast() {
-        String result=null;
+    public Elem getLast() {
+        Elem result=null;
 
         if (isEmpty()) {
             System.out.println("DList: List is empty");
-        } else result=trailer.prev.elem.word;
+        } else result=trailer.prev.elem;
 
         return result;
     }
 
 
-    public String getAt(int index) {
+    public Elem getAt(int index) {
         int i = 0;
-        String result=null;
+        Elem result=null;
         for (DNode nodeIt = header.next; nodeIt != trailer && result==null; nodeIt = nodeIt.next) {
             if (i == index) {
-                result=nodeIt.elem.word;
+                result=nodeIt.elem;
             }
             ++i;
         }
@@ -219,7 +219,7 @@ public class DList implements IList {
         else {
             while (aux != trailer) {
                 while (i < cola.getSize()) {
-                    if (aux.elem == cola.fusion(i)) {
+                    if (aux.elem.word == cola.fusion(i).word) {
                         i++;
                     } else {
                         addFirst(cola.fusion(i));
@@ -228,10 +228,5 @@ public class DList implements IList {
                 }
             }
         }
-
-
     }
-
-
-
 }
