@@ -25,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         File f = new File("/home/tau/UNI/EDA/LabCase1.txt");//The directory of the file
-        DList dictionary = new DList();
+        Dictionary dictionary = new Dictionary();
         SQueue queue = new SQueue();
         try{
             queue.addWords(reader(f));//We adding the words in the queue
@@ -33,13 +33,7 @@ public class Main {
             for(int i=0;i<queue.getSize();i++){
                 System.out.println(queue.getAt(i));
             }*/
-            int disize = queue.getSize();
-            int i = 0;
-            while(i < disize || i == disize){
-                dictionary.enDlist(queue);
-                disize-=dictionary.getAt(i).frequency - 1;
-                i++;
-            }
+            dictionary.add(queue);
             System.out.println(dictionary.toString());
             System.out.println(dictionary.getSize());
         } catch (IOException e){//if it is an error make the e.printStackTrace

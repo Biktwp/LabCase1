@@ -9,31 +9,31 @@ public interface IList {
 
     public void addLast(Elem newElem);
 
-    public void removeFirst();
+   // public void removeFirst();
 
-    public void removeLast();
+   // public void removeLast();
 
 
-    public void insertAt(int index, Elem newElem);
+   // public void insertAt(int index, Elem newElem);
 
     public boolean isEmpty();
 
-    public boolean contains(Elem elem);
+   // public boolean contains(Elem elem);
 
     public int getSize();
 
-    public int getIndexOf(Elem elem);
+    //public int getIndexOf(Elem elem);
 
-    public Elem getFirst();
+  //  public Elem getFirst();
 
-    public Elem getLast();
+ //   public Elem getLast();
 
-    public Elem getAt(int index);
+  //  public Elem getAt(int index);
 
     public String toString();
 
-    public void removeAll(Elem elem);
+  //  public void removeAll(Elem elem);
 
-    public void removeAt(int index);
+  //  public void removeAt(int index);
 
 }
