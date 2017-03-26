@@ -4,7 +4,7 @@ import  java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class Main {
+public class Test {
 
     public static String[] reader(File f) throws IOException{
         FileReader fr = new FileReader(f);
@@ -35,11 +35,16 @@ public class Main {
             }*/
             dictionary.add(queue);
             dictionary.show('a');
-            //System.out.println(dictionary.search);
             System.out.println(dictionary.toString());
-            System.out.println(dictionary.getSize());
+            System.out.println("The number of words in the dictionary is "+dictionary.getSize());
+            System.out.println(dictionary.search("so"));
+            System.out.println();
+            dictionary.getTop(10);
+            dictionary.getLast(10);
         } catch (IOException e){//if it is an error make the e.printStackTrace
             e.printStackTrace();
         }
     }
+
+
 }

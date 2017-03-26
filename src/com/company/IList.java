@@ -7,6 +7,10 @@ public interface IList {
 
     public void addFirst(Elem newElem);
 
+    public void addLast(Elem newElem);
+
+    public Elem getAt(int n);
+
     public boolean isEmpty();
 
     public int getSize();
