@@ -27,16 +27,6 @@ public class Dictionary implements IList {
         size++;
     }
 
-
-    public void addLast(Elem elem) {
-        DNode newNode = new DNode(elem);
-        newNode.next = trailer;
-        newNode.prev= trailer.prev;
-        trailer.prev.next = newNode;
-        trailer.prev= newNode;
-        size++;
-    }
-
     public boolean isEmpty() {
         return (header.next == trailer);
     }
@@ -58,36 +48,30 @@ public class Dictionary implements IList {
         return result == null ? "empty" : result;
     }
 
-    public void add(SQueue queue){
+    public void add(SQueue queue){//this method introduces all the words in the list
         for(int i = 0;i < queue.getSize();i++){
             add(queue.getAt(i),queue);
         }
     }
 
-    public void add(String word,SQueue queue){
+    public void add(String word,SQueue queue){// This method add the frequency and sort the list in alphabetical order
         DNode aux = header.next;
-        int fr = -1;
         boolean re = false;
-        Elem elem;
+        Elem elem = new Elem(word,queue.frequency(word));
         if (isEmpty()) {
-            addFirst((elem = new Elem(word,queue.frequency(word))));
+            addFirst(elem);
         }
         else {
             while (aux != trailer && !re) {
-                if (aux.elem.word.equals(word)) {
-                    re = true;
-                }
+                if (aux.elem.word.equals(word))re = true;
                     aux = aux.next;
             }
-            if (!re){
-                addFirst((elem = new Elem(word,queue.frequency(word))));
-            }
+            if (!re)addFirst(elem);
         }
         boolean foundChange = true;
         while(foundChange) {
             foundChange = false;
             for(DNode nodeIt=header.next; nodeIt!=trailer.prev; nodeIt=nodeIt.next) {
-
                 if (nodeIt.elem.word.compareTo(nodeIt.next.elem.word)>0) {
                     foundChange=true;
                     Elem aux1=nodeIt.elem;
@@ -100,5 +84,50 @@ public class Dictionary implements IList {
         }
 
     }
+
+    public void show(char c){//This method sort the list in ascending alphabetical order if you introduce an a, otherwise the list is sorted in a descending alphabetical order
+        if (c == 'a'){//Sorts in a ascending alphabetical order
+            boolean foundChange = true;
+            while(foundChange) {
+                foundChange = false;
+                for(DNode nodeIt=header.next; nodeIt!=trailer.prev; nodeIt=nodeIt.next) {
+                    if (nodeIt.elem.word.compareTo(nodeIt.next.elem.word)>0) {
+                        foundChange=true;
+                        Elem aux1=nodeIt.elem;
+                        nodeIt.elem=nodeIt.next.elem;
+                        nodeIt.next.elem=aux1;
+                    }
+
+                }
+
+            }
+        }
+        else{//Sorts in a descending alphabetical order
+            boolean foundChange = true;
+            while(foundChange) {
+                foundChange = false;
+                for(DNode nodeIt=header.next; nodeIt!=trailer.prev; nodeIt=nodeIt.next) {
+                    if (nodeIt.elem.word.compareTo(nodeIt.next.elem.word)<0) {
+                        foundChange=true;
+                        Elem aux1=nodeIt.elem;
+                        nodeIt.elem=nodeIt.next.elem;
+                        nodeIt.next.elem=aux1;
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    public int search(String word){
+        for(DNode nodeIt=header.next; nodeIt!=trailer.prev; nodeIt=nodeIt.next) {
+            if (nodeIt.elem.word.equals(word)){
+                System.out.print("The frequency of "+word+" is ");return nodeIt.elem.frequency;
+            }
+        }
+        System.out.print("The word does not exists");return -1;
+    }
+
 
 }

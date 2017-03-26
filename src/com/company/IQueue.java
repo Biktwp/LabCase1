@@ -11,10 +11,6 @@ public interface IQueue  {
 
     public void enqueue(String word);
 
-    // public String dequeue();
-
-  //  public String front();
-
-   public int getSize();
+    public int getSize();
 
 }

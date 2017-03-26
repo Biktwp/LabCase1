@@ -34,6 +34,8 @@ public class Main {
                 System.out.println(queue.getAt(i));
             }*/
             dictionary.add(queue);
+            dictionary.show('a');
+            //System.out.println(dictionary.search);
             System.out.println(dictionary.toString());
             System.out.println(dictionary.getSize());
         } catch (IOException e){//if it is an error make the e.printStackTrace
