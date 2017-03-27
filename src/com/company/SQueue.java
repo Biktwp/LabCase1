@@ -32,9 +32,7 @@ public class SQueue implements IQueue {
         int f = 0;
         SNode aux = first;
         while(aux != null){
-            if (word.equals(aux.word)){
-                f++;
-            }
+            if (word.equals(aux.word)) f++;
             aux = aux.next;
         }
         return f;

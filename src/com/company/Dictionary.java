@@ -107,12 +107,16 @@ public class Dictionary implements IList {
 
     }
 
-    public void show(char c){//This method sort the list in ascending alphabetical order if you introduce an a, otherwise the list is sorted in a descending alphabetical order
+    public Dictionary show(char c){//This method sort the list in ascending alphabetical order if you introduce an a, otherwise the list is sorted in a descending alphabetical order
+        Dictionary newDictionary = new Dictionary();
+        for(int i = 0; i < getSize();i++){//Here the words are introduced in the new list
+            newDictionary.addLast(getAt(i));
+        }
         if (c == 'a'){//Sorts in a ascending alphabetical order
             boolean foundChange = true;
             while(foundChange) {
                 foundChange = false;
-                for(DNode nodeIt=header.next; nodeIt!=trailer.prev; nodeIt=nodeIt.next) {
+                for(DNode nodeIt=newDictionary.header.next; nodeIt!=newDictionary.trailer.prev; nodeIt=nodeIt.next) {
                     if (nodeIt.elem.word.compareTo(nodeIt.next.elem.word)>0) {
                         foundChange=true;
                         Elem aux1=nodeIt.elem;
@@ -128,7 +132,7 @@ public class Dictionary implements IList {
             boolean foundChange = true;
             while(foundChange) {
                 foundChange = false;
-                for(DNode nodeIt=header.next; nodeIt!=trailer.prev; nodeIt=nodeIt.next) {
+                for(DNode nodeIt=newDictionary.header.next; nodeIt!=newDictionary.trailer.prev; nodeIt=nodeIt.next) {
                     if (nodeIt.elem.word.compareTo(nodeIt.next.elem.word)<0) {
                         foundChange=true;
                         Elem aux1=nodeIt.elem;
@@ -140,6 +144,8 @@ public class Dictionary implements IList {
 
             }
         }
+        System.out.println(newDictionary.toString());//Here the new list are printed
+        return newDictionary;
     }
 
     public int search(String word){//This method search a word in the dictionary and returns the frequency
@@ -174,7 +180,7 @@ public class Dictionary implements IList {
         return newDictionary;
     }
 
-    public Dictionary getLast(int n){//This method is to print a list with n numbers of words and in descending frequency number
+    public Dictionary getLow(int n){//This method is to print a list with n numbers of words and in descending frequency number
         Dictionary newDictionary = new Dictionary();//here a new list is created
         boolean foundChange = true;
         while(foundChange) {// Here the Dictionary is sort in descending frequency number
@@ -196,6 +202,4 @@ public class Dictionary implements IList {
         System.out.println(newDictionary.toString());//Here the new list are printed
         return newDictionary;
     }
-
-
 }

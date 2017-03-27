@@ -34,13 +34,13 @@ public class Test {
                 System.out.println(queue.getAt(i));
             }*/
             dictionary.add(queue);
-            dictionary.show('a');
-            System.out.println(dictionary.toString());
+            dictionary.show('c');
+            //System.out.println(dictionary.toString());
             System.out.println("The number of words in the dictionary is "+dictionary.getSize());
             System.out.println(dictionary.search("so"));
             System.out.println();
             dictionary.getTop(10);
-            dictionary.getLast(10);
+            dictionary.getLow(10);
         } catch (IOException e){//if it is an error make the e.printStackTrace
             e.printStackTrace();
         }
