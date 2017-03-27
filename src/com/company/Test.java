@@ -28,19 +28,25 @@ public class Test {
         Dictionary dictionary = new Dictionary();
         SQueue queue = new SQueue();
         try{
+            long ini = System.nanoTime();
             queue.addWords(reader(f));//We adding the words in the queue
             /*System.out.println("hol"+reader(f).length);
             for(int i=0;i<queue.getSize();i++){
                 System.out.println(queue.getAt(i));
             }*/
             dictionary.add(queue);
-            dictionary.show('c');
+
             //System.out.println(dictionary.toString());
             System.out.println("The number of words in the dictionary is "+dictionary.getSize());
             System.out.println(dictionary.search("so"));
             System.out.println();
-            dictionary.getTop(10);
             dictionary.getLow(10);
+            dictionary.getTop(10);
+            dictionary.show('c');
+            long time = System.nanoTime()-ini;
+            System.out.println(time);
+
+
         } catch (IOException e){//if it is an error make the e.printStackTrace
             e.printStackTrace();
         }

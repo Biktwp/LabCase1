@@ -5,7 +5,6 @@ package com.company;
  */
 public class Dictionary implements IList {
 
-
     DNode header;
     DNode trailer;
     int size;
@@ -16,7 +15,6 @@ public class Dictionary implements IList {
         header.next = trailer;
         trailer.prev= header;
     }
-
 
     public void addFirst(Elem elem) {//This method add the word and its frequency in the first position in the list
         DNode newNode = new DNode(elem);
@@ -40,23 +38,18 @@ public class Dictionary implements IList {
         return (header.next == trailer);
     }
 
-    public int getSize() {
+    public int getSize() {return size;}
 
-        return size;
-    }
     public Elem getAt(int index) {//This method is to obtain the word and its frequency in a specific position
         int i = 0;
         Elem result=null;
         for (DNode nodeIt = header.next; nodeIt != trailer && result==null; nodeIt = nodeIt.next) {
-            if (i == index) {
-                result=nodeIt.elem;
-            }
+            if (i == index) result=nodeIt.elem;
             ++i;
         }
         if (result==null) System.out.println("DList: Get out of bounds");
         return result;
     }
-
 
     public String  toString() {//This method is to print all the list
         String result = null;
@@ -80,9 +73,7 @@ public class Dictionary implements IList {
         DNode aux = header.next;
         boolean re = false;
         Elem elem = new Elem(word,queue.frequency(word));//This is the word and its frequency to introduce in the Dictionary
-        if (isEmpty()) {
-            addFirst(elem);
-        }
+        if (isEmpty()) addFirst(elem);
         else {//If the word is not in the dictionary this is introduced with its frequency
             while (aux != trailer && !re) {
                 if (aux.elem.word.equals(word))re = true;
@@ -107,45 +98,21 @@ public class Dictionary implements IList {
 
     }
 
-    public Dictionary show(char c){//This method sort the list in ascending alphabetical order if you introduce an a, otherwise the list is sorted in a descending alphabetical order
-        Dictionary newDictionary = new Dictionary();
-        for(int i = 0; i < getSize();i++){//Here the words are introduced in the new list
-            newDictionary.addLast(getAt(i));
-        }
-        if (c == 'a'){//Sorts in a ascending alphabetical order
+    public void show(char c){//This method sort the list in ascending alphabetical order if you introduce an a, otherwise the list is sorted in a descending alphabetical order
+        if (c != 'a'){//Sorts in a ascending alphabetical order
             boolean foundChange = true;
             while(foundChange) {
                 foundChange = false;
-                for(DNode nodeIt=newDictionary.header.next; nodeIt!=newDictionary.trailer.prev; nodeIt=nodeIt.next) {
-                    if (nodeIt.elem.word.compareTo(nodeIt.next.elem.word)>0) {
-                        foundChange=true;
-                        Elem aux1=nodeIt.elem;
-                        nodeIt.elem=nodeIt.next.elem;
-                        nodeIt.next.elem=aux1;
-                    }
-
-                }
-
-            }
-        }
-        else{//Sorts in a descending alphabetical order
-            boolean foundChange = true;
-            while(foundChange) {
-                foundChange = false;
-                for(DNode nodeIt=newDictionary.header.next; nodeIt!=newDictionary.trailer.prev; nodeIt=nodeIt.next) {
+                for(DNode nodeIt=header.next; nodeIt!=trailer.prev; nodeIt=nodeIt.next) {
                     if (nodeIt.elem.word.compareTo(nodeIt.next.elem.word)<0) {
                         foundChange=true;
                         Elem aux1=nodeIt.elem;
                         nodeIt.elem=nodeIt.next.elem;
                         nodeIt.next.elem=aux1;
                     }
-
                 }
-
             }
         }
-        System.out.println(newDictionary.toString());//Here the new list are printed
-        return newDictionary;
     }
 
     public int search(String word){//This method search a word in the dictionary and returns the frequency
@@ -169,9 +136,7 @@ public class Dictionary implements IList {
                     nodeIt.elem=nodeIt.next.elem;
                     nodeIt.next.elem=aux1;
                 }
-
             }
-
         }
         for(int i = 0; i < n;i++){//Here the words are introduced in the new list
             newDictionary.addLast(getAt(i));
@@ -194,7 +159,6 @@ public class Dictionary implements IList {
                 }
 
             }
-
         }
         for(int i = 0; i < n;i++){//Here the words are introduced in the new list
             newDictionary.addLast(getAt(i));
