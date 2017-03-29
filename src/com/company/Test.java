@@ -36,13 +36,14 @@ public class Test {
             }*/
             dictionary.add(queue);
 
-            //System.out.println(dictionary.toString());
+            System.out.println(dictionary.toString());
             System.out.println("The number of words in the dictionary is "+dictionary.getSize());
-            System.out.println(dictionary.search("so"));
+            System.out.println(dictionary.search("vul"));
             System.out.println();
             dictionary.getLow(10);
             dictionary.getTop(10);
-            dictionary.show('c');
+            dictionary.show('a');
+            System.out.println(dictionary.toString());
             long time = System.nanoTime()-ini;
             System.out.println(time);
 

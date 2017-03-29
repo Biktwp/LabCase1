@@ -7,7 +7,7 @@ public class SQueue implements IQueue {
 
     SNode first;
     SNode last;
-    int size = 0;
+    int size;
 
     @Override
     public boolean isEmpty() {
