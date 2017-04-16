@@ -28,16 +28,6 @@ public class SQueue implements IQueue {
         return size;
     }
 
-    public int frequency(String word){//Returns the number of times a word is repeated
-        int f = 0;
-        SNode aux = first;
-        while(aux != null){
-            if (word.equals(aux.word)) f++;
-            aux = aux.next;
-        }
-        return f;
-    }
-
     public String getAt(int size){//Returns the word in a specific position
         SNode aux = first;
         if (isEmpty()){

@@ -65,18 +65,19 @@ public class Dictionary implements IList {
 
     public void add(SQueue queue){//this method introduces all the words in the list
         for(int i = 0;i < queue.getSize();i++){
-            add(queue.getAt(i),queue);
+            add(queue.getAt(i));
         }
     }
 
-    public void add(String word,SQueue queue){// This method add the frequency and sort the list in alphabetical order
+    public void add(String word){// This method add the frequency and sort the list in alphabetical order
         DNode aux = header.next;
         boolean re = false;
-        Elem elem = new Elem(word,queue.frequency(word));//This is the word and its frequency to introduce in the Dictionary
+        int fr=1;
+        Elem elem = new Elem(word,fr);//This is the word and its frequency to introduce in the Dictionary
         if (isEmpty()) addFirst(elem);
         else {//If the word is not in the dictionary this is introduced with its frequency
             while (aux != trailer && !re) {
-                if (aux.elem.word.equals(word))re = true;
+                if (aux.elem.word.equals(word)) {re = true;aux.elem.frequency++;}
                     aux = aux.next;
             }
             if (!re)addFirst(elem);
@@ -91,11 +92,8 @@ public class Dictionary implements IList {
                     nodeIt.elem=nodeIt.next.elem;
                     nodeIt.next.elem=aux1;
                 }
-
             }
-
         }
-
     }
 
     public void show(char c){//This method sort the list in ascending alphabetical order if you introduce an a, otherwise the list is sorted in a descending alphabetical order
@@ -157,7 +155,6 @@ public class Dictionary implements IList {
                     nodeIt.elem=nodeIt.next.elem;
                     nodeIt.next.elem=aux1;
                 }
-
             }
         }
         for(int i = 0; i < n;i++){//Here the words are introduced in the new list
